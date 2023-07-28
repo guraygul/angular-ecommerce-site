@@ -1,24 +1,47 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
+import { User } from './user';
+import { Firestore } from '@angular/fire/firestore';
+import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { GoogleAuthProvider } from 'firebase/auth'
+import { Router } from '@angular/router';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  constructor (
+    public router: Router,
+  ){}
   
-  constructor(private afs: AngularFireAuth) { }
+  LogIn( email: string, password: string) {
+    const auth = getAuth();
+    return signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        return userCredential.user;
+        // ...
 
-  signInWithGoogle() {
-    return this.afs.signInWithPopup(new GoogleAuthProvider());
+      })
+      .catch((error) => {
+        return error;
+      });
   }
 
-  registerWithEmailAndPassword(user : {email: string, password: string}) {
-    return this.afs.createUserWithEmailAndPassword(user.email, user.password);
+  Register(email: string, password: string) {
+
+    const auth = getAuth();
+    return createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+
+      })
+      .catch((error) => {
+        
+      });
   }
 
-  signWithEmailAndPassword(user : {email: string, password: string}) {
-   return this.afs.signInWithEmailAndPassword(user.email, user.password);
-  }
 
 }

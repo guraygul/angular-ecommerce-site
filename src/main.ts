@@ -21,6 +21,6 @@ bootstrapApplication(AppComponent, appConfig)
     importProvidersFrom(
       AngularFireModule.initializeApp(environment.firebase),
       AngularFireAnalyticsModule,
-      AngularFireAuthModule  
+      AngularFireAuthModule
     ),
   ]
