@@ -7,8 +7,26 @@
         <input
           type="text"
           class="formControl"
-          placeholder="Username"
+          placeholder="Name"
           #userName
+          required
+        />
+      </div>
+      <div class="formGroup">
+        <input
+          type="text"
+          class="formControl"
+          placeholder="Surname"
+          #userSurname
+          required
+        />
+      </div>
+      <div class="formGroup">
+        <input
+          type="text"
+          class="formControl"
+          placeholder="Mail"
+          #userMail
           required
         />
       </div>
@@ -24,7 +42,7 @@
       <!-- Calling SignIn Api from AuthService -->
       <div class="formGroup">
 
-        <button (click)="login(userName.value, userPassword.value)">Login</button>
+        <button (click)="login(userMail.value, userPassword.value)">Login</button>
       </div>
       <div class="formGroup">
         <span class="or"><span class="orInner">Or</span></span>
@@ -42,7 +60,7 @@
         >
           Sign Up</span
         ></span> -->
-        <button (click)="register(userName.value, userPassword.value)">Register</button>
+        <button (click)="register(userName.value, userSurname.value, userMail.value, userPassword.value)">Register</button>
 
     </div>
   </div>

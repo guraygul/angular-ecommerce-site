@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 @Component({
   selector: 'app-login',
@@ -10,8 +10,8 @@ export class LoginComponent {
     public authService: AuthService
   ) { }
 
-  login(username:string,userPassword:string) {
-    this.authService.LogIn(username, userPassword)
+  login(userMail:string, userPassword:string) {
+    this.authService.LogIn(userMail, userPassword)
       .then((user) => {
         console.log(user)
       })
@@ -20,7 +20,7 @@ export class LoginComponent {
       })
   }
 
-  register(username:string,userPassword:string) {
-    this.authService.Register(username, userPassword)
+  register(userName:string, userSurname:string, userMail:string,userPassword:string) {
+    this.authService.Register(userMail, userPassword)
   }
 }
