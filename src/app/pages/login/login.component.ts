@@ -20,7 +20,7 @@ export class LoginComponent {
       })
   }
 
-  register(userName:string, userSurname:string, userMail:string,userPassword:string) {
+  register(userMail:string,userPassword:string) {
     this.authService.Register(userMail, userPassword)
   }
 }
